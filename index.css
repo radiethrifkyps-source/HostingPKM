@@ -1,0 +1,232 @@
+* {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+
+    box-sizing: border-box;
+}
+
+:root {
+    --color-deep-maroon: #029602;
+    --color-gold: #FFC04D;
+    --color-islamic-blue: #1E3A8A;
+    --color-hoverblue: #3f6cff;
+    --color-primary: #029602;
+    --color-cream: #F5EFEB;
+    --color-olive-green: #7D8866;
+    --color-secondary: #FFC04D;
+    --color-deep-gold: #B8860B;
+    --color-white: #FFFFFF;
+    --color-text: #333333;
+    --color-text-muted: #777777;
+    --color-glow: rgba(255, 192, 77, 0.8);
+    --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.nav-custom:hover {
+    background-color: var(--color-hoverblue)!important;
+    color: white !important;
+    border-color: 2px solid yellow !important;
+}
+
+.nav-bg-image {
+    background-image: url('img/backgrnd.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-bottom: 2px solid black;
+    object-fit: contain;
+}
+
+.container-main {
+    margin: 10px;
+    border: 2px solid black;
+}
+
+.back-color {
+    background-color: var(--color-deep-maroon)
+}
+
+.cursor-block {
+    cursor: not-allowed !important;
+}
+
+.img-welcome {
+    display: block;
+    position: relative;
+    margin-left: 330px;
+    height: 300px;
+    width: 800px;
+    top: -20px;
+}
+
+/* TOMBOL */
+.menu-belajar-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    width: 100%;
+}
+
+.menu-card {
+    min-width: 250px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 20px 25px;
+    background: var(--color-white);
+    text-decoration: none;
+    border-radius: 20px;
+    border: 3px solid var(--color-hoverblue);
+    border-left: 12px solid var(--color-secondary);
+    box-shadow: 0 8px 0 var(--color-hoverblue), 0 15px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+    overflow: hidden;
+    position: relative;
+}
+
+.menu-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 192, 77, 0.2), transparent);
+    transition: 0.6s;
+}
+
+.menu-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    background-color: var(--color-secondary);
+    border-color: var(--color-secondary);
+}
+
+.menu-card:hover::after {
+    left: 100%;
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    margin-right: 20px;
+    flex-shrink: 0;
+    filter: drop-shadow(0 0 5px var(--color-glow));
+    transition: transform 0.4s ease;
+}
+
+.card-info {
+    min-width: 0;
+}
+
+.card-info h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--color-hoverblue);
+    font-weight: 800;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-info p {
+    margin: 5px 0 0;
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+}
+
+
+.menu-card:hover h3,
+.menu-card:hover p {
+    color: var(--color-primary);
+}
+
+.menu-card:hover .card-icon {
+    transform: rotate(10deg) scale(1.2);
+}
+
+/* Media Query untuk Tablet (di bawah 992px) */
+@media (max-width: 992px) {
+    .img-welcome {
+        margin-left: 0;
+        width: 100%;
+        height: auto;
+        max-width: 500px; /* Batasi agar tidak terlalu raksasa di tablet */
+    }
+}
+
+/* Media Query untuk Mobile (di bawah 768px) */
+@media (max-width: 768px) {
+    /* 1. Perbaikan Gambar Welcome */
+    .img-welcome {
+        margin-left: 0;
+        width: 90%; /* Memberi sedikit ruang di pinggir */
+        height: auto;
+        top: 0; /* Reset posisi top agar tidak bertabrakan */
+    }
+
+    /* 2. Perbaikan Navbar Background */
+    .nav-bg-image {
+        height: auto !important; /* Biarkan tinggi menyesuaikan isi */
+        padding: 40px 0;
+    }
+
+    /* 3. Perbaikan Judul Materi agar ke tengah di HP */
+    .container-fluid.d-flex.flex-column {
+        align-items: center !important; 
+    }
+
+    .img-materi {
+        margin: 0 auto 20px auto; /* Memastikan gambar materi tetap di tengah */
+        display: block;
+    }
+
+    .p-materii {
+        text-align: left !important; /* Teks rata kiri */
+        width: 100%; /* Pastikan mengambil lebar penuh agar rata kiri terlihat */
+        padding: 0 10px; /* Tambahkan sedikit padding agar teks tidak menempel ke pinggir layar */
+    }
+
+    /* 4. Grid Menu Belajar */
+    .menu-belajar-container {
+        /* Ubah menjadi 1 kolom penuh di HP agar tidak sempit */
+        grid-template-columns: 1fr; 
+        gap: 15px;
+        padding: 0 10px;
+    }
+
+    .menu-card {
+        min-width: unset; /* Hapus min-width agar tidak meluap */
+        width: 100%;
+        padding: 15px;
+        border-left: 8px solid var(--color-secondary); /* Perkecil sedikit aksen garis */
+    }
+
+    .card-icon {
+        font-size: 2rem;
+        margin-right: 15px;
+    }
+
+    .card-info h3 {
+        font-size: 1rem;
+    }
+}
+
+/* Media Query untuk HP Sangat Kecil (di bawah 480px) */
+@media (max-width: 480px) {
+    .navbar-brand {
+        font-size: 0.9rem !important; /* Agar teks judul web tidak pecah baris */
+    }
+    
+    .menu-card {
+        box-shadow: 0 5px 0 var(--color-primary), 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+}
